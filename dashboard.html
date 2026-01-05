@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - Smart Classroom System</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <h2 class="nav-logo">🎓 Smart Classroom</h2>
+            <div class="nav-menu">
+                <a href="#" class="nav-link active" data-page="dashboard">Dashboard</a>
+                <a href="#" class="nav-link" data-page="announcements">Announcements</a>
+                <a href="#" class="nav-link" data-page="activities">Activities</a>
+                <a href="#" class="nav-link" data-page="materials">Materials</a>
+                <a href="#" class="nav-link" data-page="schedule">Schedule</a>
+                <a href="#" class="nav-link" data-page="ai-assistant">AI Assistant</a>
+                <a href="#" class="nav-link" data-page="submissions">Submissions</a>
+                <a href="#" class="nav-link" data-page="polls">Polls</a>
+                <a href="#" class="nav-link" data-page="feedback">Feedback</a>
+                <a href="#" class="nav-link" data-page="users" id="usersNavLink" style="display:none;">Users</a>
+                <a href="#" class="nav-link" data-page="students" id="studentsNavLink" style="display:none;">Students Info</a>
+                <a href="#" class="nav-link" data-page="approvals" id="approvalsNavLink" style="display:none;">Pending Approvals</a>
+                <span class="user-info">
+                    <span id="userRole"></span> | <span id="userName"></span>
+                    <button id="logoutBtn" class="btn btn-small">Logout</button>
+                </span>
+            </div>
+            <button class="mobile-menu-toggle">☰</button>
+        </div>
+    </nav>
+
+    <main class="main-content">
+        <!-- Dashboard Page -->
+        <div id="dashboard-page" class="page active">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 30px; flex-wrap: wrap; gap: 20px;">
+                <div>
+                    <h1 style="margin-bottom: 5px;">Welcome Back!</h1>
+                    <p id="dashboardGreeting" style="color: #666; font-size: 16px;">Here's what's happening in your classroom</p>
+                </div>
+                <div id="dashboardStats" style="display: flex; gap: 15px; flex-wrap: wrap;">
+                    <!-- Stats will be populated by JS -->
+                </div>
+            </div>
+            <div class="dashboard-grid">
+                <div class="dashboard-card">
+                    <h3>📢 Announcements</h3>
+                    <div id="dashboard-announcements"></div>
+                </div>
+                <div class="dashboard-card">
+                    <h3>📅 Upcoming Deadlines</h3>
+                    <div id="dashboard-deadlines"></div>
+                </div>
+                <div class="dashboard-card">
+                    <h3>📊 Progress</h3>
+                    <div id="dashboard-progress"></div>
+                </div>
+                <div class="dashboard-card">
+                    <h3>🔔 Notifications</h3>
+                    <div id="dashboard-notifications"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Announcements Page -->
+        <div id="announcements-page" class="page">
+            <div class="page-header">
+                <h1>Announcements</h1>
+                <button id="newAnnouncementBtn" class="btn btn-primary" style="display:none;">+ New Announcement</button>
+            </div>
+            <div id="announcements-list"></div>
+        </div>
+
+        <!-- Activities Page -->
+        <div id="activities-page" class="page">
+            <div class="page-header">
+                <h1>Activities & Deadlines</h1>
+                <button id="newActivityBtn" class="btn btn-primary" style="display:none;">➕ New Activity</button>
+            </div>
+            <div id="activities-list"></div>
+        </div>
+
+        <!-- Materials Page -->
+        <div id="materials-page" class="page">
+            <div class="page-header">
+                <h1>Learning Materials</h1>
+                <button id="uploadMaterialBtn" class="btn btn-primary" style="display:none;">➕ Upload Material</button>
+            </div>
+            <div id="materials-list"></div>
+        </div>
+
+        <!-- Schedule Page -->
+        <div id="schedule-page" class="page">
+            <div class="page-header">
+                <h1>Class Schedule</h1>
+                <button id="editScheduleBtn" class="btn btn-primary" style="display:none;">✏️ Edit Schedule</button>
+            </div>
+            <div id="schedule-view"></div>
+        </div>
+
+        <!-- AI Assistant Page -->
+        <div id="ai-assistant-page" class="page">
+            <h1>AI Academic Assistant</h1>
+            <div class="ai-container">
+                <div class="ai-chat" id="aiChat"></div>
+                <div class="ai-input-container">
+                    <input type="text" id="aiInput" placeholder="Ask a question or request help with a topic...">
+                    <button id="aiSendBtn" class="btn btn-primary">Send</button>
+                    <input type="file" id="aiFileInput" accept=".pdf,.doc,.docx,.txt" style="display:none;">
+                    <button id="aiUploadBtn" class="btn btn-secondary">📎 Upload Notes</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Submissions Page -->
+        <div id="submissions-page" class="page">
+            <div class="page-header">
+                <h1>Activity Submissions</h1>
+            </div>
+            <div id="submissions-list"></div>
+        </div>
+
+        <!-- Polls Page -->
+        <div id="polls-page" class="page">
+            <div class="page-header">
+                <h1>Polls & Voting</h1>
+                <button id="newPollBtn" class="btn btn-primary" style="display:none;">+ Create Poll</button>
+            </div>
+            <div id="polls-list"></div>
+        </div>
+
+        <!-- Feedback Page -->
+        <div id="feedback-page" class="page">
+            <div class="page-header">
+                <h1>Class Feedback</h1>
+            </div>
+            <div id="feedback-form-container"></div>
+            <div id="feedback-list" style="display:none;"></div>
+        </div>
+
+        <!-- User Management Page -->
+        <div id="users-page" class="page">
+            <div class="page-header">
+                <h1>User Management</h1>
+                <button id="newUserBtn" class="btn btn-primary" style="display:none;">+ Create User</button>
+            </div>
+            <div id="users-list"></div>
+        </div>
+
+        <!-- Students Info Page -->
+        <div id="students-page" class="page">
+            <div class="page-header">
+                <h1>Students Information</h1>
+            </div>
+            <div id="students-info-list"></div>
+        </div>
+
+        <!-- Pending Approvals Page -->
+        <div id="approvals-page" class="page">
+            <div class="page-header">
+                <h1>Pending Student Approvals</h1>
+            </div>
+            <div id="pending-approvals-list"></div>
+        </div>
+    </main>
+
+    <!-- Modals -->
+    <div id="modal-overlay" class="modal-overlay">
+        <div class="modal-content">
+            <span class="modal-close">&times;</span>
+            <div id="modal-body"></div>
+        </div>
+    </div>
+
+    <!-- Load scripts in order -->
+    <script src="js/config.js"></script>
+    <script src="js/database.js"></script>
+    <script src="js/auth.js"></script>
+    <script src="js/announcements.js"></script>
+    <script src="js/activities.js"></script>
+    <script src="js/materials.js"></script>
+    <script src="js/schedule.js"></script>
+    <script src="js/ai-assistant.js"></script>
+    <script src="js/submissions.js"></script>
+    <script src="js/polls.js"></script>
+    <script src="js/feedback.js"></script>
+    <script src="js/user-management.js"></script>
+    <script src="js/students-info.js"></script>
+    <script src="js/approvals.js"></script>
+    <script src="js/app.js"></script>
+</body>
+</html>
+

@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Complete Your Profile - Smart Classroom System</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="login-page">
+    <div class="login-container">
+        <div class="login-box" style="max-width: 500px;">
+            <h1>📝 Complete Your Profile</h1>
+            <p class="subtitle">Please provide your information to continue</p>
+            
+            <form id="userInfoForm">
+                <div id="studentInfo" style="display: none;">
+                    <div class="form-group">
+                        <label for="studentName">Full Name *</label>
+                        <input type="text" id="studentName" required placeholder="Enter your full name">
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="studentAge">Age *</label>
+                            <input type="number" id="studentAge" required min="10" max="100" placeholder="Age">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="studentSection">Section *</label>
+                        <input type="text" id="studentSection" required placeholder="e.g., Section A">
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="studentEmail">Email Address</label>
+                        <input type="email" id="studentEmail" placeholder="your.email@example.com">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="studentPhone">Phone Number</label>
+                        <input type="tel" id="studentPhone" placeholder="+63 9XX XXX XXXX">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="studentAddress">Address</label>
+                        <textarea id="studentAddress" rows="2" placeholder="Your address"></textarea>
+                    </div>
+                </div>
+                
+                <div id="teacherInfo" style="display: none;">
+                    <div class="form-group">
+                        <label for="teacherName">Full Name *</label>
+                        <input type="text" id="teacherName" required placeholder="Enter your full name">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="teacherEmail">Email Address *</label>
+                        <input type="email" id="teacherEmail" required placeholder="your.email@example.com">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="teacherPhone">Phone Number</label>
+                        <input type="tel" id="teacherPhone" placeholder="+63 9XX XXX XXXX">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="teacherSubject">Subject/Department</label>
+                        <input type="text" id="teacherSubject" placeholder="e.g., Mathematics, Science">
+                    </div>
+                </div>
+                
+                <div id="classrepInfo" style="display: none;">
+                    <div class="form-group">
+                        <label for="classrepName">Full Name *</label>
+                        <input type="text" id="classrepName" required placeholder="Enter your full name">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="classrepEmail">Email Address *</label>
+                        <input type="email" id="classrepEmail" required placeholder="your.email@example.com">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="classrepPhone">Phone Number</label>
+                        <input type="tel" id="classrepPhone" placeholder="+63 9XX XXX XXXX">
+                    </div>
+                </div>
+                
+                <button type="submit" class="btn btn-primary" style="width: 100%; margin-top: 20px;" id="submitBtn">Complete Registration</button>
+            </form>
+            
+            <div id="infoError" class="error-message"></div>
+            <div id="loadingIndicator" style="display: none; text-align: center; margin-top: 20px;">
+                <div class="spinner"></div>
+                <p style="margin-top: 10px; color: #666;">Processing registration...</p>
+            </div>
+        </div>
+    </div>
+    
+    <script src="js/config.js"></script>
+    <script src="js/database.js"></script>
+    <script src="js/auth.js"></script>
+    <script src="js/user-info.js"></script>
+</body>
+</html>
+

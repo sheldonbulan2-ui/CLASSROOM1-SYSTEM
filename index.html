@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smart Classroom System - Login</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="login-page">
+    <div class="login-container">
+        <div class="login-box">
+            <h1>🎓 Smart Classroom System</h1>
+            <p class="subtitle">AI-Enhanced Classroom Management</p>
+            
+            <div id="loginSection">
+                <form id="loginForm">
+                    <div class="form-group">
+                        <label for="username">Username</label>
+                        <input type="text" id="username" required autocomplete="username">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="password">Password</label>
+                        <input type="password" id="password" required autocomplete="current-password">
+                    </div>
+                    
+                    <p style="text-align: center; color: #666; margin: 15px 0;">
+                        Don't have an account? <a href="#" id="showSignupLink" style="color: var(--primary-color); text-decoration: none; font-weight: 600;">Sign Up</a>
+                    </p>
+                    
+                    <button type="submit" class="btn btn-primary" style="width: 100%;">Login</button>
+                </form>
+                
+                <div class="social-login">
+                    <div class="divider">
+                        <span>or</span>
+                    </div>
+                    <button class="btn-social google" onclick="socialLogin('google')">
+                        <span>🔍</span> Continue with Google
+                    </button>
+                    <button class="btn-social facebook" onclick="socialLogin('facebook')">
+                        <span>📘</span> Continue with Facebook
+                    </button>
+                </div>
+                
+                <div id="loginError" class="error-message"></div>
+            </div>
+            
+            <div id="signupSection" style="display: none;">
+                <h2 style="margin-bottom: 20px;">Create Account</h2>
+                <form id="signupForm">
+                    <div class="form-group">
+                        <label for="signupRole">I am a</label>
+                        <select id="signupRole" required onchange="handleRoleChange()">
+                            <option value="">Select role...</option>
+                            <option value="student">Student</option>
+                            <option value="teacher">Teacher</option>
+                            <option value="classrep">Class Representative</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="signupUsername">Username</label>
+                        <input type="text" id="signupUsername" required placeholder="Choose a username">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="signupPassword">Password</label>
+                        <input type="password" id="signupPassword" required placeholder="Minimum 6 characters" minlength="6">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="signupConfirmPassword">Confirm Password</label>
+                        <input type="password" id="signupConfirmPassword" required placeholder="Re-enter password">
+                    </div>
+                    
+                    <p style="text-align: center; color: #666; margin: 15px 0;">
+                        Already have an account? <a href="#" id="showLoginLink" style="color: var(--primary-color); text-decoration: none; font-weight: 600;">Login</a>
+                    </p>
+                    
+                    <button type="submit" class="btn btn-primary" style="width: 100%;">Sign Up</button>
+                </form>
+                
+                <div class="social-login">
+                    <div class="divider">
+                        <span>or</span>
+                    </div>
+                    <button class="btn-social google" onclick="socialSignup('google')">
+                        <span>🔍</span> Continue with Google
+                    </button>
+                    <button class="btn-social facebook" onclick="socialSignup('facebook')">
+                        <span>📘</span> Continue with Facebook
+                    </button>
+                </div>
+                
+                <div id="signupError" class="error-message"></div>
+            </div>
+        </div>
+    </div>
+    
+    <script src="js/config.js"></script>
+    <script src="js/database.js"></script>
+    <script src="js/auth.js"></script>
+    <script src="js/registration.js"></script>
+</body>
+</html>
+
